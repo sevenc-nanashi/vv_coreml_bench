@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+          curl "https://jaist.dl.sourceforge.net/project/open-jtalk/Dictionary/open_jtalk_dic-1.11/open_jtalk_dic_utf_8-1.11.tar.gz" -o open_jtalk_dic_utf_8-1.11.tar.gz
+          tar zxvf open_jtalk_dic_utf_8-1.11.tar.gz
+
+          curl https://github.com/VOICEVOX/voicevox_core/raw/main/model/sample.vvm -o conv1d.vvm
+          curl https://cdn.discordapp.com/attachments/847301818571816960/1152729793381552209/xaa -Lo /tmp/xaa
+          curl https://cdn.discordapp.com/attachments/847301818571816960/1152729793733865562/xab -Lo /tmp/xab
+          cat /tmp/xaa /tmp/xab > conv2d.vvm
+
+          curl https://github.com/microsoft/onnxruntime/releases/download/v1.14.0/onnxruntime-osx-arm64-1.14.0.tgz -Lo onnxruntime-osx-arm64-1.14.0.tgz
+          tar zxvf onnxruntime-osx-arm64-1.14.0.tgz
+          cp onnxruntime-osx-arm64-1.14.0/lib/libonnxruntime.1.14.0.dylib .
+      - name: Run
+        run: |
+          python main.py
