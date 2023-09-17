@@ -1,9 +1,12 @@
 import time
 import asyncio
 import ctypes
+import logging
 
 ctypes.CDLL("./libonnxruntime.1.14.0.dylib")
 import voicevox_core
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 async def main():
@@ -30,7 +33,7 @@ async def main():
             for i in range(10):
                 start = time.time()
                 await synthesizer.tts(
-                    f"おーる ゆあ ぼいしーず あー びろんぐ つー あす", model.metas[0].styles[0].id
+                    f"こんにちは", model.metas[0].styles[0].id
                 )
                 results.append(time.time() - start)
 
