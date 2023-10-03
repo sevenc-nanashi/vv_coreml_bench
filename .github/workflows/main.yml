@@ -26,9 +26,9 @@ jobs:
           curl https://cdn.discordapp.com/attachments/847301818571816960/1152729793733865562/xab -Lo /tmp/xab
           cat /tmp/xaa /tmp/xab > conv2d.vvm
 
-          curl https://github.com/microsoft/onnxruntime/releases/download/v1.14.0/onnxruntime-osx-x86_64-1.14.0.tgz -Lo onnxruntime-osx-x86_64-1.14.0.tgz
-          tar zxvf onnxruntime-osx-x86_64-1.14.0.tgz
-          cp onnxruntime-osx-x86_64-1.14.0/lib/libonnxruntime.1.14.0.dylib .
+          curl https://github.com/microsoft/onnxruntime/releases/download/v1.14.0/onnxruntime-osx-x86_64-1.14.0.tgz -Lo onnxruntime-osx-x86_64-1.16.0.tgz
+          tar zxvf onnxruntime-osx-x86_64-1.16.0.tgz
+          cp onnxruntime-osx-x86_64-1.16.0/lib/libonnxruntime.1.16.0.dylib .
       - name: Run
         run: |
           python main.py

@@ -3,7 +3,7 @@ import asyncio
 import ctypes
 import logging
 
-ctypes.CDLL("./libonnxruntime.1.14.0.dylib")
+ctypes.CDLL("./libonnxruntime.1.16.0.dylib")
 import voicevox_core
 
 logging.basicConfig(level=logging.DEBUG)
@@ -30,7 +30,7 @@ async def main():
             await synthesizer.load_voice_model(model)
 
             results = []
-            for i in range(10):
+            for _ in range(5):
                 start = time.time()
                 await synthesizer.tts(
                     f"こんにちは", model.metas[0].styles[0].id
