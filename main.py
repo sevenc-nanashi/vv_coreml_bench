@@ -11,11 +11,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 async def main():
     open_jtalk = voicevox_core.OpenJtalk("./open_jtalk_dic_utf_8-1.11")
-    conv1d = await voicevox_core.VoiceModel.from_path("./conv1d.vvm")
+    # conv1d = await voicevox_core.VoiceModel.from_path("./conv1d.vvm")
     conv2d = await voicevox_core.VoiceModel.from_path("./conv2d.vvm")
 
     for acceleration in [
-        voicevox_core.AccelerationMode.CPU,
+        # voicevox_core.AccelerationMode.CPU,
         voicevox_core.AccelerationMode.GPU,
     ]:
         synthesizer = await voicevox_core.Synthesizer.new_with_initialize(
@@ -26,7 +26,8 @@ async def main():
         else:
             print("GPU:")
 
-        for name, model in [("conv1d", conv1d), ("conv2d", conv2d)]:
+        # for name, model in [("conv1d", conv1d), ("conv2d", conv2d)]:
+        for name, model in [("conv2d", conv2d)]:
             await synthesizer.load_voice_model(model)
 
             results = []
