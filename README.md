@@ -4,6 +4,9 @@ Voicevox CoreのモデルはCoreML+Conv2dで速くなるのかを調べるため
 
 ## 環境構築
 ```bash
+gh repo clone sevenc-nanashi/vv_coreml_bench
+cd vv_coreml_bench
+
 # Python周り
 python -m pip install --upgrade pip
 pip install -r requirements.txt
@@ -19,7 +22,7 @@ curl https://cdn.discordapp.com/attachments/847301818571816960/11527297937338655
 cat /tmp/xaa /tmp/xab > conv2d.vvm
 
 # onnxruntimeダウンロード
-curl https://github.com/microsoft/onnxruntime/releases/download/v1.14.0/onnxruntime-osx-x86_64-1.14.0.tgz -Lo onnxruntime-osx-x86_64-1.14.0.tgz
-tar zxvf onnxruntime-osx-x86_64-1.14.0.tgz
-cp onnxruntime-osx-x86_64-1.14.0/lib/libonnxruntime.1.14.0.dylib .
+curl https://github.com/microsoft/onnxruntime/releases/download/v1.16.0/onnxruntime-osx-x86_64-1.16.0.tgz -LO
+tar zxvf onnxruntime-osx-x86_64-1.16.0.tgz
+cp onnxruntime-osx-x86_64-1.16.0/lib/libonnxruntime.1.16.0.dylib .
 ```
