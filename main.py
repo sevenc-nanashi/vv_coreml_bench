@@ -6,7 +6,7 @@ import logging
 ctypes.CDLL("./libonnxruntime.1.16.0.dylib")
 import voicevox_core
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 async def main():
