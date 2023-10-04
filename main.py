@@ -15,7 +15,7 @@ async def main():
     conv2d = await voicevox_core.VoiceModel.from_path("./conv2d.vvm")
 
     for acceleration in [
-        # voicevox_core.AccelerationMode.CPU,
+        voicevox_core.AccelerationMode.CPU,
         voicevox_core.AccelerationMode.GPU,
     ]:
         synthesizer = await voicevox_core.Synthesizer.new_with_initialize(
